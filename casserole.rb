@@ -9,7 +9,8 @@ require_relative 'lib/tree_editor'
 
 tree = Crass.parse(open('./overrides.css').read, preserve_comments: false)
 # TreeWalker.new(tree, PropertyShrinker).walk
-# bb "BEFORE: #{tree}"
+# bb Crass::Parser.stringify(tree)
 editor = TreeEditor.new(tree, PropertyShrinker)
 editor.walk
 # bb "AFTER: #{editor.tree}"
+# bb Crass::Parser.stringify(editor.tree)

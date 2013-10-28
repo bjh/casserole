@@ -61,3 +61,4 @@ emacs-config.el
 .rvmrc
 .ruby-gemset
 .ruby-version
+output.txt
