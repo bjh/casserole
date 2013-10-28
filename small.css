@@ -1,0 +1,8 @@
+header, .navbar-fixed-top, .navbar-inner, .navbar .btn-navbar {
+  background: #fff;
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none; 
+  box-shadow: none;
+  -webkit-appearance:none;
+  border:none;
+}
