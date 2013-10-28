@@ -1,6 +1,6 @@
 class PropertyShrinker
   def initialize(node)
-    @scale = 2.5
+    @scale = 3
     @node = node
     @operands = [
       :height, 
@@ -41,7 +41,7 @@ end
 
 class NumericPropertyShrinker < PropertyShrinker
   def execute
-    return @node if not @operands.include? @node[:name].to_sym    
+    return @node if not @operands.include? @node[:name].to_sym
     
     @node[:value] = scale_values(@node[:value].strip)
     @node
@@ -59,10 +59,11 @@ class NumericPropertyShrinker < PropertyShrinker
     ]
   end
   
+  # NOTE: need to handle 'auto'
   def scale_values(values)
     values.split(' ').collect do |value|
       n, unit = parse(value)
-      "#{n*@scale}#{unit}"
+      "#{(n*@scale).to_i}#{unit}"
     end.join(' ')
   end
 end

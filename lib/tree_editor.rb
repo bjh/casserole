@@ -7,25 +7,20 @@ class TreeEditor
   end
   
   def walk
-    walk_helper(@tree)
+    @tree = walk_helper(@tree)
   end
   
 private
   def walk_helper(tree)
-    output = []
-    
-    tree.each do |node|
-      puts node
-      node = @node_editor.build(node).execute
-      
+    return tree.map do |node|
       if children? node
-        walk_helper(node[:children])
+        what = node[:children].map do |child|
+          @node_editor.build(child).execute
+        end
       end
       
-      output << node
+      node
     end
-    
-    # puts Crass::Parser.stringify(output)
   end
   
   def children?(node)
