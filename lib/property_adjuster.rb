@@ -1,4 +1,4 @@
-class PropertyShrinker
+class PropertyAdjuster
   def initialize(node)
     @scale = 3
     @node = node
@@ -27,19 +27,19 @@ class PropertyShrinker
   
   def self.build(node)
     case node[:node]
-      when :property;     return NumericPropertyShrinker.new(node)
-      else;               return NullPropertyShrinker.new(node)
+      when :property;     return NumericPropertyAdjuster.new(node)
+      else;               return NullPropertyAdjuster.new(node)
     end
   end
 end
 
-class NullPropertyShrinker < PropertyShrinker
+class NullPropertyAdjuster < PropertyAdjuster
   def execute
     @node
   end
 end
 
-class NumericPropertyShrinker < PropertyShrinker
+class NumericPropertyAdjuster < PropertyAdjuster
   def execute
     return @node if not @operands.include? @node[:name].to_sym
     

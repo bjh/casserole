@@ -5,4 +5,9 @@ header, .navbar-fixed-top, .navbar-inner, .navbar .btn-navbar {
   box-shadow: none;
   -webkit-appearance:none;
   border:none;
+  width: 100px;
+  height: 100px;
+  margin: 1px 2em 5pt 1233px;
+  padding-top: 0;
+  padding-right: auto;
 }

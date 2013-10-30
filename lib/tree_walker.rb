@@ -16,7 +16,7 @@ private
       
       if children? node
         walk_helper(node[:children], depth+1)
-      end      
+      end
     end
   end
   
