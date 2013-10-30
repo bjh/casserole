@@ -1,6 +1,6 @@
 class AdjustmentBureau
-  def initialize(property)
-    @scale = 3
+  def initialize(property, scale)
+    @scale = scale
     # @original_property = property
     @property = parse(property.to_s)
     @operands = [
@@ -48,18 +48,27 @@ class AdjustmentBureau
   def scale(property)
     property[:value] = property[:value].split(' ').collect do |value|
       n, unit = parse_value(value)
-      "#{(n*@scale).to_i}#{unit}"
+      
+      if numeric? n
+        "#{(n*@scale).to_i}#{unit}"
+      else
+        "#{n}"
+      end
     end.join(' ')
     
     property
+  end
+  
+  def numeric?(value)
+    /^[0-9]/.match(value.to_s)
   end
   
   # returns the integer value and the unit type in a an array
   def parse_value(field)
     n = field.strip
 
-    if n =~ /^[0-9]*/
-      puts "YES YES"
+    # usually 'auto' when not a number
+    if numeric? n
       n = n.to_i
     end
       

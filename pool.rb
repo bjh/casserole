@@ -3,13 +3,15 @@ require 'csspool'
 
 require_relative 'lib/adjustment_bureau'
 
-doc = CSSPool.CSS open('./small.css')
+Scale = 4
+
+doc = CSSPool.CSS open('./css/overrides.css')
 
 doc.rule_sets.collect do |rule|
   puts rule.selectors.join(', ') + ' {'
   
   rule.declarations.each do |decl|
-    puts AdjustmentBureau.new(decl).adjust
+    puts AdjustmentBureau.new(decl, Scale).adjust
   end
   
   puts '}'
