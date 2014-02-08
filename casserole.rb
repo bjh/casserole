@@ -7,7 +7,7 @@ require_relative 'lib/property_adjuster'
 require_relative 'lib/tree_walker'
 require_relative 'lib/tree_editor'
 
-tree = Crass.parse(open('./small.css').read, preserve_comments: false)
+tree = Crass.parse(open('./css/small.css').read, preserve_comments: false)
 # tree2 = Crass.parse(open('./overrides.css').read, preserve_comments: false)
 # TreeWalker.new(tree, NodePrinter).walk
 # bb Crass::Parser.stringify(tree)
